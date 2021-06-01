@@ -37,9 +37,8 @@
 
 
 .callout {
-    padding-left: 10px;
-    padding-top: 10px;
-    margin: 20px 0;
+    padding-top: 5px;
+    margin-top: 20px ;
     margin-left: 10px;
     border: 1px solid #eee;
     border-left-width: 5px;
@@ -51,12 +50,17 @@
     color: red !important;
     width: 35px;
     height: 35px;
+    background-color: white;
+    border-color: white;
 }
+
 
 
 .subrayado {
     border-top: 7px solid #ffc007;
-  }
+    margin-top: 1px;
+    margin-bottom: 2px;
+}
 
 .end{
     align-items:end !important;
@@ -76,11 +80,3 @@
     font-style: oblique !important;
 }
 
-p{
-    margin: 0;
-}
-
-hr{
-    margin-top: 10px;
-    margin-bottom: 10px;
-}

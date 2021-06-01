@@ -7,34 +7,31 @@ import ListPost from './components/Posts/ListPost'
 
 const initialsPost = [
   { id: uuidv4(), authorPost: 'Alexis', textPost: '-0,25 Por no poner bien el padding.' },
-  { id: uuidv4(), authorPost: 'Jose Carlos', textPost: 'La próxima te quito 1.5 por no poner en rojo el color.' }
+  { id: uuidv4(), authorPost: 'Alexis 2.0', textPost: 'La próxima te quito 1.5 por no poner en rojo el color.' }
 ];
 
-function App({author,textPost}) {
+function App() {
 
   const doGetPosts = () => {
-    const result = JSON.parse(localStorage.getItem('posts'));
+    const result = JSON.parse(localStorage.getItem('Posts'));
     return result ? result : initialsPost;
-  };
+  }
 
-  const [posts, setPosts] = useState(doGetPosts());
+  const [thisPosts, setPosts] = useState(doGetPosts());
 
   const handleAdd = () => {
     setPosts([
-      ...posts,
-      { id: uuidv4(), name: {author} },
-      { id: uuidv4(), textPost : {textPost} }
+      ...thisPosts,
+      {id: uuidv4(), name: 'algo'}
     ]);
-    localStorage.setItem('categories', JSON.stringify(posts));
-  };
+    localStorage.setItem('thisPosts', JSON.stringify(thisPosts))
+  }
 
   const handleDelete = (id) => {
-        setPosts(posts.filter((posts) => posts.id !== id));
-      };
+    setPosts(thisPosts.filter((thisPosts) => thisPosts.id !== id ));
+  }
 
-  useEffect(() => {
-    localStorage.setItem('posts', JSON.stringify(posts));
-  }, []); 
+ 
 
   return (
     <div>
@@ -42,10 +39,7 @@ function App({author,textPost}) {
       <div className="container-fluid">
         <div className="row align-items-start">
         <FormSendPost />
-        <ListPost 
-            Posts={posts} 
-            onDelete={handleDelete}
-        />
+        <ListPost/>
         </div>
       </div>
     </div >
