@@ -1,0 +1,86 @@
+
+.logoIndex{
+    width:60px;
+    height:60px;
+}
+
+.btn-warning{
+    width: 70px;
+    text-align: center;
+}
+
+.btn-primary{
+    margin-top: 20px;
+}
+
+.espaciador{
+    margin-right: 10px;
+}
+
+.topBarText{
+    color: #c1c1c1;
+    margin-top: 5px;
+}
+
+.colorAutor{
+    background-color: #ffc007 !important;
+}
+
+.sinPading{
+    margin-top: 10px;
+}
+
+.espizq{
+    padding-left: 10px;
+    margin-top: -10px !important;
+}
+
+
+.callout {
+    padding-left: 10px;
+    padding-top: 10px;
+    margin: 20px 0;
+    margin-left: 10px;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+    border-left-color: black;
+}
+
+.botonBasura{
+    color: red !important;
+    width: 35px;
+    height: 35px;
+}
+
+
+.subrayado {
+    border-top: 7px solid #ffc007;
+  }
+
+.end{
+    align-items:end !important;
+    justify-content: end !important;
+}
+
+.deleteContainer{
+    padding-left: 0;
+}
+
+.row{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.fontCursive{
+    font-style: oblique !important;
+}
+
+p{
+    margin: 0;
+}
+
+hr{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
