@@ -5,14 +5,14 @@ const ListPost = (props) => {
     const { posts, onDelete } = props;
     return (
         <div className="row col-6">
-          {posts.map((category) => {
+          {posts.map((post) => {
             return (
               <Post 
-                key={posts.id}
-                id={posts.id}
-                authorPost={posts.authorPost}
-                title={posts.title}
-                textPost={posts.textPost}
+                key={post.id}
+                id={post.id}
+                authorPost={post.authorPost}
+                title={post.title}
+                textPost={post.textPost}
                 onDelete={onDelete}
                 />
             );
