@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Post = ({ id, authorPost, title, textPost, onDelete }) => {
+const Post = ({ id, authorPost, title, textPost, onDelete , onSubmit }) => {
     return (
         <div className="row">
             <div className="card callout">

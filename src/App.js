@@ -10,7 +10,7 @@ const initialsPost = [
   { id: uuidv4(), authorPost: 'Alexis 2.0', title:"Usando React Fragments", textPost: 'La próxima te quito 1.5 por no poner en rojo el color.' }
 ];
 
-function App({title, textPost}) {
+function App() {
 
 
   /* Código del FormSend Post 
@@ -25,7 +25,7 @@ function App({title, textPost}) {
   const handleAdd = () => {
     setPosts([
       ...posts,
-      {id: uuidv4(), authorPost: 'Perro', title: {title}, textPost: {textPost}}
+      {id: uuidv4(), authorPost: 'hola' , title: '', textPost: ''}
     ]);
     localStorage.setItem('postsCategories', JSON.stringify(posts))
   }
@@ -64,7 +64,7 @@ function App({title, textPost}) {
                 posts={posts}
                 onDelete = {handleDelete}
         />
-        
+
         </div>
       </div>
     </div >
