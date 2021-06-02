@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 
-const FormSendPost = ({ authorPost, textPost }) => {
+const FormSendPost = () => {
 
     return (
         <div className=" col-6 sinPading">

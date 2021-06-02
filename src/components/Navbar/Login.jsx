@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 
 const Login = () => {
@@ -12,8 +11,5 @@ const Login = () => {
     );
 };
 
-Login.propTypes = {
-    input: PropTypes.string.isRequired
-};
 
 export default Login;

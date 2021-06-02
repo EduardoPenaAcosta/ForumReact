@@ -1,23 +1,21 @@
 import React from 'react';
 
 
-const Post = ({ id, authorPost, textPost, onDelete }) => {
-
-
+const Post = ({ id, authorPost, title, textPost, onDelete }) => {
     return (
         <div className="row">
             <div className="card callout">
-                <h5>TextoPrueba</h5>
+                <h5>{title}</h5>
                 <hr className="subrayado" />
-                <p>Prueba</p>
+                <p>{textPost}</p>
                 <div className="container deleteContainer">
                     <div className="row justify-content-end">
                         <div className="col-11 deleteContainer ">
                             <span className="fontCursive">Written by </span>
-                            <strong>Prueba</strong>
+                            <strong>{authorPost}</strong>
                         </div>
                         <div className="col-1">
-                            <button type="button" className="btn bi bi-trash botonBasura" />
+                            <button type="button" onClick = {() => onDelete(id)} className="btn bi bi-trash botonBasura" />
                         </div>
                     </div>
                 </div>
