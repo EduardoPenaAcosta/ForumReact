@@ -4,6 +4,9 @@ import { v4 as uuidv4 } from 'uuid';
 import Navbar from './components/Navbar/Navbar';
 import FormSendPost from './components/Posts/FormSendPost';
 import ListPost from './components/Posts/ListPost'
+import Login from './components/Navbar/Login'
+
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 const initialsPost = [
   { id: uuidv4(), authorPost: 'Alexis', title:"React Hooks", textPost: '-0,25 Por no poner bien el padding.' },
@@ -12,23 +15,37 @@ const initialsPost = [
 
 function App() {
 
-
   /* Código del FormSend Post 
   Desde aquí se traen los datos.*/
-  const [FormPost, setFormPost] = useState({});
+  const [FormPost, setFormPost] = useState();
 
   const onSubmit = (datos) =>{
     setFormPost(datos);
   }
 
   /* Agregar los posts a su adecuado... */
+
+  const [ postAutor, setPostAutor] = useState('');
+  const [postTitulo, setpostTitulo] = useState();
+  const [postTexto, setPostTexto] = useState();
+
+  function handleChange(name,value){
+      if(name === 'name'){
+        setPostAutor(value)
+      }
+  }
+
+
+ 
   const handleAdd = () => {
     setPosts([
       ...posts,
-      {id: uuidv4(), authorPost: 'hola' , title: '', textPost: ''}
+      {id: uuidv4(), authorPost: 'SinAutor' , title: setpostTitulo, textPost: setPostTexto}
     ]);
     localStorage.setItem('postsCategories', JSON.stringify(posts))
   }
+
+  
 
 
   /* Obtención de los POSTS e impresión en la web */
@@ -39,7 +56,6 @@ function App() {
 
   const [posts, setPosts] = useState(doGetPosts());
 
- 
 
   const handleDelete = (id) => {
     setPosts(posts.filter((posts) => posts.id !== id ));
@@ -52,11 +68,22 @@ function App() {
 
   return (
     <div>
-      <Navbar/>
+      <Navbar
+        
+      />
       <div className="container-fluid">
         <div className="row align-items-start">
 
-        <FormSendPost onSubmit={onSubmit}
+        <FormSendPost
+                      atTitulo={{
+                          id: 'id',
+                          name: 'name',
+                      }}
+                      atPost={{
+                          id: 'id',
+                          name: 'name'
+                      }}
+                      onSubmit={onSubmit}
                       handleAdd={handleAdd} 
         />
 
@@ -64,7 +91,6 @@ function App() {
                 posts={posts}
                 onDelete = {handleDelete}
         />
-
         </div>
       </div>
     </div >
