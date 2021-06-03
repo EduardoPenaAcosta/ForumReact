@@ -1,48 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment, useState } from 'react';
 
 
 
-const FormSendPost = ({atTitulo, atPost, onSubmit, handleAdd }) => {
-
-    const initPost = {
-        title: '',
-        textPost: ''
-    };
-
-    const [post, setPostState] = useState(initPost);
+const FormSendPost = ({ handleChange, handleChangeTitle, handleAdd}) => {
 
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        onSubmit(post);
-    };
+
+    const enviarDatos = (event) =>{
+        event.preventDefault();
+    }
 
     return (
         <div className=" col-6 sinPading">
             <div className="card">
                 <div className="card-header colorAutor"> Autor: </div>
                 <div className="card-body">
-                    <form onSubmit={handleSubmit}>
-                        <label className="form-label" id="title">Título: </label>
+                    <form onSubmit={enviarDatos} method="POST">
+                        <label className="form-label" id="titulo">Título: </label>
 
                         <input 
-                                id={atTitulo.id} 
-                                name={atTitulo.name}
+                                id='titulo'
+                                name='titulo'
                                 type="text" 
                                 className="form-control"
+                                onChange={ (e) => handleChange(e.target.name, e.target.value)}
                         />
 
-                        <label className="form-label" id="textPost">Mensaje: </label>
+                        <label className="form-label" id="texto">Mensaje: </label>
 
-                        <input  id={atPost.id} 
-                                name={atPost.name}
+                        <input  id='texto'
+                                name='texto'
                                 type="textarea" 
                                 className="form-control" 
-                                rows="3" 
-                                placeholder="Tu texto..." 
+                                placeholder="Tu texto..."
+                                onChange={ (e) => handleChange(e.target.name, e.target.value)}
                         />
 
-                        <button type="submit" className="btn btn-primary" onClick = {() => handleAdd(atTitulo.name, atPost.namet)}>Nuevo post</button>
+                        <button type="submit" className="btn btn-primary" onclick={(e) => handleAdd()} >Nuevo post</button>
                     </form>
                 </div>
             </div>

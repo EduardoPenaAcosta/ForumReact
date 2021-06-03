@@ -1,5 +1,6 @@
 import React from 'react';
 import Post from './Post';
+import FormSendPost from './FormSendPost';
 
 const ListPost = (props) => {
     const { posts, onDelete } = props;

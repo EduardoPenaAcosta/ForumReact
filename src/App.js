@@ -23,30 +23,31 @@ function App() {
     setFormPost(datos);
   }
 
-  /* Agregar los posts a su adecuado... */
+  /* Aportamos el título del post y el post en sí. */
+  const [titulo, setTitulo] = useState('');
+  const [texto, setTexto] = useState('');
 
-  const [ postAutor, setPostAutor] = useState('');
-  const [postTitulo, setpostTitulo] = useState();
-  const [postTexto, setPostTexto] = useState();
-
+  /* Con esta función, lo que haremos será */
   function handleChange(name,value){
-      if(name === 'name'){
-        setPostAutor(value)
-      }
+    if(name === 'titulo'){
+      setTitulo(value);
+    }else if(name === 'texto'){
+      setTexto(value);
+    }
   }
 
+  console.log("Titulo: " + titulo);
+  console.log("Texto: " + texto)
 
- 
+
+
   const handleAdd = () => {
     setPosts([
       ...posts,
-      {id: uuidv4(), authorPost: 'SinAutor' , title: setpostTitulo, textPost: setPostTexto}
+      {id: uuidv4(), authorPost: 'SinAutor' , title: titulo, textPost: texto}
     ]);
     localStorage.setItem('postsCategories', JSON.stringify(posts))
   }
-
-  
-
 
   /* Obtención de los POSTS e impresión en la web */
   const doGetPosts = () => {
@@ -75,14 +76,7 @@ function App() {
         <div className="row align-items-start">
 
         <FormSendPost
-                      atTitulo={{
-                          id: 'id',
-                          name: 'name',
-                      }}
-                      atPost={{
-                          id: 'id',
-                          name: 'name'
-                      }}
+                      handleChange={handleChange}
                       onSubmit={onSubmit}
                       handleAdd={handleAdd} 
         />
