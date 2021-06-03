@@ -4,9 +4,6 @@ import { v4 as uuidv4 } from 'uuid';
 import Navbar from './components/Navbar/Navbar';
 import FormSendPost from './components/Posts/FormSendPost';
 import ListPost from './components/Posts/ListPost'
-import Login from './components/Navbar/Login'
-
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 const initialsPost = [
   { id: uuidv4(), authorPost: 'Alexis', title:"React Hooks", textPost: '-0,25 Por no poner bien el padding.' },
@@ -39,7 +36,13 @@ function App() {
   console.log("Titulo: " + titulo);
   console.log("Texto: " + texto)
 
+  /* Obtención de los POSTS e impresión en la web */
+  const doGetPosts = () => {
+    const result = JSON.parse(localStorage.getItem('postsCategories'));
+    return result ? result : initialsPost;
+  }
 
+  const [posts, setPosts] = useState(doGetPosts());
 
   const handleAdd = () => {
     setPosts([
@@ -48,14 +51,6 @@ function App() {
     ]);
     localStorage.setItem('postsCategories', JSON.stringify(posts))
   }
-
-  /* Obtención de los POSTS e impresión en la web */
-  const doGetPosts = () => {
-    const result = JSON.parse(localStorage.getItem('postsCategories'));
-    return result ? result : initialsPost;
-  }
-
-  const [posts, setPosts] = useState(doGetPosts());
 
 
   const handleDelete = (id) => {
@@ -74,9 +69,10 @@ function App() {
       />
       <div className="container-fluid">
         <div className="row align-items-start">
-
+      
         <FormSendPost
-                      handleChange={handleChange}
+                      posts={posts}
+                      name={FormSendPost.name}
                       onSubmit={onSubmit}
                       handleAdd={handleAdd} 
         />
