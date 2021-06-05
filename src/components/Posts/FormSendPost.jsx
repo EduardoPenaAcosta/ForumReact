@@ -2,11 +2,10 @@ import React, {useState} from 'react';
 
 
 
-const FormSendPost = ({ handleAdd,onSubmit,handleChange},props) => {
+const FormSendPost = ({ handleAdd,handleChange},props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSubmit();
     };
 
 

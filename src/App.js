@@ -25,10 +25,11 @@ function App() {
   const [texto, setTexto] = useState('');
 
   /* Con esta función, lo que haremos será */
-  function handleChange(name,value){
+  const handleChange = (name,value) => {
     if(name === 'titulo'){
       setTitulo(value);
-    }else if(name === 'texto'){
+    }
+    if(name === 'texto'){
       setTexto(value);
     }
   }
