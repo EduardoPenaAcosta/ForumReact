@@ -12,24 +12,30 @@ const initialsPost = [
 
 function App() {
 
-
   /* Código del FormSend Post 
   Desde aquí se traen los datos.*/
-  const [FormPost, setFormPost] = useState({});
+  const [FormPost, setFormPost] = useState();
 
   const onSubmit = (datos) =>{
     setFormPost(datos);
   }
 
-  /* Agregar los posts a su adecuado... */
-  const handleAdd = () => {
-    setPosts([
-      ...posts,
-      {id: uuidv4(), authorPost: 'hola' , title: '', textPost: ''}
-    ]);
-    localStorage.setItem('postsCategories', JSON.stringify(posts))
+  /* Aportamos el título del post y el post en sí. */
+  const [titulo, setTitulo] = useState('');
+  const [texto, setTexto] = useState('');
+
+  /* Con esta función, lo que haremos será */
+  const handleChange = (name,value) => {
+    if(name === 'titulo'){
+      setTitulo(value);
+    }
+    if(name === 'texto'){
+      setTexto(value);
+    }
   }
 
+  console.log("Titulo: " + titulo);
+  console.log("Texto: " + texto)
 
   /* Obtención de los POSTS e impresión en la web */
   const doGetPosts = () => {
@@ -39,7 +45,14 @@ function App() {
 
   const [posts, setPosts] = useState(doGetPosts());
 
- 
+  const handleAdd = () => {
+    setPosts([
+      ...posts,
+      {id: uuidv4(), authorPost: 'SinAutor' , title: titulo, textPost: texto}
+    ]);
+    localStorage.setItem('postsCategories', JSON.stringify(posts))
+  }
+
 
   const handleDelete = (id) => {
     setPosts(posts.filter((posts) => posts.id !== id ));
@@ -52,11 +65,16 @@ function App() {
 
   return (
     <div>
-      <Navbar/>
+      <Navbar
+        
+      />
       <div className="container-fluid">
         <div className="row align-items-start">
-
-        <FormSendPost onSubmit={onSubmit}
+      
+        <FormSendPost
+                      posts={posts}
+                      name={FormSendPost.name}
+                      onSubmit={onSubmit}
                       handleAdd={handleAdd} 
         />
 
@@ -64,7 +82,6 @@ function App() {
                 posts={posts}
                 onDelete = {handleDelete}
         />
-
         </div>
       </div>
     </div >
